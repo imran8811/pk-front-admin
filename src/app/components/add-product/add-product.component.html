@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-head mt-3 mb-5 text-center">Add Products</h2>
+      <form [formGroup]="addProductForm" class="row" (ngSubmit)="AddProduct()">
+        <div class="mb-3 col-lg-12">
+          <label for="title">Title</label>
+          <input type="text" id="title" class="form-control" formControlName="title">
+        </div>
+        <div class="mb-3 col-lg-3">
+          <label for="department">Select Department</label>
+          <select formControlName="department" id="department" class="form-control">
+            <option value="Men" selected>Men</option>
+            <option value="Women">Women</option>
+          </select>
+        </div>
+        <div class="mb-3 col-lg-3">
+          <label for="category">Select Category</label>
+          <select formControlName="category" id="category" class="form-control">
+            <option value="jeansPant" selected>Jeans Pants</option>
+            <option value="jeansShirt">Jeans shirts</option>
+          </select>
+        </div>
+        <div class="mb-3 col-lg-2">
+          <label for="style-no">Style#</label>
+          <input type="text" id="style-no" class="form-control" formControlName="styleNo">
+        </div>
+        <div class="mb-3 col-lg-4">
+          <label for="p-color">Color</label>
+          <input type="text" id="p-color" class="form-control" formControlName="color">
+        </div>
+        <div class="mb-3 col-lg-12">
+          <h3>Prices</h3>
+          <div class="row mb-3" formGroupName="prices">
+            <div class="col-lg-4">
+              <label for="price-sample">Sample</label>
+              <input type="text" id="price-sample" class="form-control" formControlName="samplePrice">
+            </div>
+            <div class="col-lg-4">
+              <label for="less-100">Less than 100</label>
+              <input type="text" id="less-100" class="form-control" formControlName="lessThan100">
+            </div>
+            <div class="col-lg-4">
+              <label for="price-regular">Regular</label>
+              <input type="text" id="price-regular" class="form-control" formControlName="regularPrice">
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-lg-12">
+          <div class="row">
+            <div class="col-lg-4" formGroupName="fabricDetails">
+              <h3>Fabric:</h3>
+              <input type="text" class="form-control mb-3" placeholder="Type" formControlName="type">
+              <input type="text" class="form-control mb-3" placeholder="Content" formControlName="content">
+              <input type="text" class="form-control mb-3" placeholder="Stretchbility" formControlName="stretchbility">
+            </div>
+            <div class="col-lg-4" formGroupName="washDetails">
+              <h3>Washes:</h3>
+              <label for="destroyed" class="d-block">
+                <input type="checkbox" id="destroyed" value="destroyed" formControlName="destroyed"> Destroyed
+              </label>
+              <label for="whiskers" class="d-block">
+                <input type="checkbox" id="whiskers" value="whiskers" formControlName="whiskers"> Whiskers
+              </label>
+              <label for="wrinkles" class="d-block">
+                <input type="checkbox" id="wrinkles" value="wrinkles" formControlName="wrinkles"> Wrinkles
+              </label>
+              <label for="faded" class="d-block">
+                <input type="checkbox" id="faded" value="faded" formControlName="faded"> Faded
+              </label>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-lg-12">
+          <ul class="images-list row" formGroupName="images">
+            <li class="mb-4 col-lg-4">
+              <label for="front-img" class="d-block">Front Image</label>
+              <input type="file" id="front-img" formControlName="frontImage">
+            </li>
+            <li class="mb-4 col-lg-4">
+              <label for="back-img" class="d-block">Back Image</label>
+              <input type="file" id="back-img" formControlName="backImage">
+            </li>
+            <li class="mb-4 col-lg-4">
+              <label for="side-pose" class="d-block">Image 1</label>
+              <input type="file" id="other-img1" formControlName="Img1">
+            </li>
+            <li class="mb-4 col-lg-4">
+              <label for="other-img" class="d-block">Image 2</label>
+              <input type="file" id="other-img2" formControlName="Img2">
+            </li>
+            <li class="mb-4 col-lg-4">
+              <label for="other-img2" class="d-block">Image 3</label>
+              <input type="file" id="other-img3" formControlName="sizeChart">
+            </li>
+          </ul>
+        </div>
+        <div class="mb-3 col-lg-12">
+          <label for="p-desc">Description</label>
+          <textarea rows="7" class="form-control" id="p-desc" formControlName="description"></textarea>
+        </div>
+        <div class="mb-3 col-lg-12 text-right">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
