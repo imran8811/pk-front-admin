@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as dayjs from 'dayjs';
+
+import { IProduct, Product } from 'src/app/models/product.model';
+import { ProductService } from 'src/app/services';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DashboardComponent implements OnInit {
+  readonly dayjs = dayjs;
+  getAllProducts:any;
+  constructor(private productService: ProductService) { }
 
-  constructor() { }
+  ngOnInit() {
+    this.getProducts();
+  }
 
-  ngOnInit() {}
+  getProducts() {
+    this.productService.getProducts().subscribe((res) => {
+      this.getAllProducts = res;
+    });
+  }
 
 }

@@ -14,4 +14,9 @@ export class ProductService {
     return response;
   }
 
+  getProducts() {
+    const response = this.http.get(Routes.GET_ALL_PRODUCTS);
+    return response;
+  }
+
 }

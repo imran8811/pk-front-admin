@@ -53,7 +53,11 @@
               <h3>Fabric:</h3>
               <input type="text" class="form-control mb-3" placeholder="Type" formControlName="type">
               <input type="text" class="form-control mb-3" placeholder="Content" formControlName="content">
-              <input type="text" class="form-control mb-3" placeholder="Stretchbility" formControlName="stretchbility">
+              <select formControlName="stretchbility" class="form-control mb-3">
+                <option value="stretch">Stretch</option>
+                <option value="nonStretch">Non Stretch</option>
+              </select>
+              <!-- <input type="text" class="form-control mb-3" placeholder="Stretchbility" formControlName="stretchbility"> -->
             </div>
             <div class="col-lg-4" formGroupName="washDetails">
               <h3>Washes:</h3>
@@ -79,23 +83,23 @@
           <ul class="images-list row" formGroupName="images">
             <li class="mb-4 col-lg-4">
               <label for="front-img" class="d-block">Front Image</label>
-              <input type="file" id="front-img" formControlName="frontImage">
+              <input type="file" #fileInputFront (click)="fileInputFront.value = ''"  id="front-img" formControlName="frontImage">
             </li>
             <li class="mb-4 col-lg-4">
               <label for="back-img" class="d-block">Back Image</label>
-              <input type="file" id="back-img" formControlName="backImage">
+              <input type="file" #fileInputBack (click)="fileInputBack.value = ''" id="back-img" formControlName="backImage">
             </li>
             <li class="mb-4 col-lg-4">
               <label for="side-pose" class="d-block">Image 1</label>
-              <input type="file" id="other-img1" formControlName="Img1">
+              <input type="file" #fileInputOne (click)="fileInputOne.value = ''" id="other-img1" formControlName="Img1">
             </li>
             <li class="mb-4 col-lg-4">
               <label for="other-img" class="d-block">Image 2</label>
-              <input type="file" id="other-img2" formControlName="Img2">
+              <input type="file" #fileInputTwo (click)="fileInputTwo.value = ''" id="other-img2" formControlName="Img2">
             </li>
             <li class="mb-4 col-lg-4">
-              <label for="other-img2" class="d-block">Image 3</label>
-              <input type="file" id="other-img3" formControlName="sizeChart">
+              <label for="size-chart" class="d-block">Size chart</label>
+              <input type="file" #fileInputChart (click)="fileInputChart.value = ''" id="size-chart" formControlName="sizeChart">
             </li>
           </ul>
         </div>

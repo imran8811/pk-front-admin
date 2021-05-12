@@ -1,7 +1,27 @@
 <app-header></app-header>
-<div class="container">
-  <div class="row">
-  <h1>Dashboard</h1>
+  <div class="container">
+    <!-- <h2 class="mt-3 text-right">Total Products ({{getAllProducts.length}})</h2> -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <td class="w-10">Style# <i class="fa fa-sort"></i></td>
+            <td class="w-10">Image</td>
+            <td class="w-40">Title</td>
+            <td class="w-10">Price <i class="fa fa-sort"></i></td>
+            <td class="w-10">Uploaded <i class="fa fa-sort"></i></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of getAllProducts">
+            <td>{{product.styleNo}}</td>
+            <td><img src="images/img1.png"></td>
+            <td>{{product.title}}</td>
+            <td>{{product.prices[0].regularPrice}}</td>
+            <td>{{dayjs(product.uploaded_at).format('YYYY-HH-MMM')}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 <app-footer></app-footer>
