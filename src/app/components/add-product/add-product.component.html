@@ -9,16 +9,16 @@
           <input type="text" id="title" class="form-control" formControlName="title">
         </div>
         <div class="mb-3 col-lg-3">
-          <label for="department">Select Department</label>
+          <label for="department">Department</label>
           <select formControlName="department" id="department" class="form-control">
-            <option value="Men" selected>Men</option>
-            <option value="Women">Women</option>
+            <option value="men">Men</option>
+            <option value="women">Women</option>
           </select>
         </div>
         <div class="mb-3 col-lg-3">
-          <label for="category">Select Category</label>
+          <label for="category">Category</label>
           <select formControlName="category" id="category" class="form-control">
-            <option value="jeansPant" selected>Jeans Pants</option>
+            <option value="jeansPant">Jeans Pants</option>
             <option value="jeansShirt">Jeans shirts</option>
           </select>
         </div>
@@ -26,56 +26,75 @@
           <label for="style-no">Style#</label>
           <input type="text" id="style-no" class="form-control" formControlName="styleNo">
         </div>
-        <div class="mb-3 col-lg-4">
+        <div class="mb-3 col-lg-2">
           <label for="p-color">Color</label>
           <input type="text" id="p-color" class="form-control" formControlName="color">
         </div>
-        <div class="mb-3 col-lg-12">
-          <h3>Prices</h3>
-          <div class="row mb-3" formGroupName="prices">
+        <div class="mb-3 col-lg-2">
+          <label for="price">Price</label>
+          <input type="text" id="price" class="form-control" formControlName="price">
+        </div>
+        <div class="mb-3 col-lg-12" formGroupName="fabricDetails">
+          <h3>Fabric:</h3>
+          <div class="row">
             <div class="col-lg-4">
-              <label for="price-sample">Sample</label>
-              <input type="text" id="price-sample" class="form-control" formControlName="samplePrice">
+              <label for="fabric-type">Type</label>
+              <input type="text" class="form-control mb-3" id="fabric-type" formControlName="type">
             </div>
             <div class="col-lg-4">
-              <label for="less-100">Less than 100</label>
-              <input type="text" id="less-100" class="form-control" formControlName="lessThan100">
+              <label for="fabric-content">Content</label>
+              <input type="text" class="form-control mb-3" id="content" formControlName="content">
             </div>
             <div class="col-lg-4">
-              <label for="price-regular">Regular</label>
-              <input type="text" id="price-regular" class="form-control" formControlName="regularPrice">
+              <label for="fabric-stretch">Stretch</label>
+              <select id="fabric-stretch" formControlName="stretchbility" class="form-control">
+                <option value="stretch">Stretch</option>
+                <option value="nonStretch">Non Stretch</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 col-lg-12" formGroupName="washDetails">
+          <h3>Washes:</h3>
+          <div class="row">
+            <div class="col-lg-3">
+              <label for="destroyed" class="d-block">
+                <input type="checkbox" id="destroyed" value="destroyed" formControlName="destroyed"> Destroyed
+              </label>
+            </div>
+            <div class="col-lg-3">
+              <label for="whiskers" class="d-block">
+                <input type="checkbox" id="whiskers" value="whiskers" formControlName="whiskers"> Whiskers
+              </label>
+            </div>
+            <div class="col-lg-3">
+              <label for="wrinkles" class="d-block">
+                <input type="checkbox" id="wrinkles" value="wrinkles" formControlName="wrinkles"> Wrinkles
+              </label>
+            </div>
+            <div class="col-lg-3">
+              <label for="faded" class="d-block">
+                <input type="checkbox" id="faded" value="faded" formControlName="faded"> Faded
+              </label>
             </div>
           </div>
         </div>
         <div class="mb-3 col-lg-12">
           <div class="row">
-            <div class="col-lg-4" formGroupName="fabricDetails">
-              <h3>Fabric:</h3>
-              <input type="text" class="form-control mb-3" placeholder="Type" formControlName="type">
-              <input type="text" class="form-control mb-3" placeholder="Content" formControlName="content">
-              <select formControlName="stretchbility" class="form-control mb-3">
-                <option value="stretch">Stretch</option>
-                <option value="nonStretch">Non Stretch</option>
-              </select>
-              <!-- <input type="text" class="form-control mb-3" placeholder="Stretchbility" formControlName="stretchbility"> -->
+            <div class="col-lg-3" formGroupName="sizes">
+              <h3>Sizes:</h3>
+              <div class="mb-3">
+                <input type="text" class="form-control mb-3" *ngFor="let size of sizes.controls; let i=index" [formControlName]="i">
+              </div>
+              <div class="mb-3">
+                <button type="button" class="btn btn-link" (click)="addSize()">Add size</button>
+              </div>
             </div>
-            <div class="col-lg-4" formGroupName="washDetails">
-              <h3>Washes:</h3>
-              <label for="destroyed" class="d-block">
-                <input type="checkbox" id="destroyed" value="destroyed" formControlName="destroyed"> Destroyed
-              </label>
-              <label for="whiskers" class="d-block">
-                <input type="checkbox" id="whiskers" value="whiskers" formControlName="whiskers"> Whiskers
-              </label>
-              <label for="wrinkles" class="d-block">
-                <input type="checkbox" id="wrinkles" value="wrinkles" formControlName="wrinkles"> Wrinkles
-              </label>
-              <label for="faded" class="d-block">
-                <input type="checkbox" id="faded" value="faded" formControlName="faded"> Faded
-              </label>
-            </div>
-            <div class="col-lg-4">
-
+            <div class="col-lg-3" formGroupName="quantity">
+              <h3>Quantity:</h3>
+              <div class="mb-3">
+                <input type="text" class="form-control mb-3" *ngFor="let quantity of quantity.controls; let i=index" [formControlName]="i">
+              </div>
             </div>
           </div>
         </div>

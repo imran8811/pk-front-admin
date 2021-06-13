@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService, ImageService } from 'src/app/services';
+import { Controller } from 'swiper';
 
 @Component({
   selector: 'app-add-product',
@@ -23,16 +24,12 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit() {
     this.addProductForm = this.fb.group({
-      department : ['Men', Validators.required],
+      department : ['men', Validators.required],
       category : ['jeansPant', Validators.required],
       title : ['', Validators.required],
       styleNo : ['', Validators.required],
       color : ['', Validators.required],
-      prices : this.fb.group({
-        samplePrice : ['', Validators.required],
-        lessThan100 : ['', Validators.required],
-        regularPrice : ['', Validators.required]
-      }),
+      price : ['', Validators.required],
       description : ['', Validators.required],
       washDetails : this.fb.group({
         destroyed : [''],
@@ -51,9 +48,18 @@ export class AddProductComponent implements OnInit {
         type : ['', Validators.required],
         content : ['', Validators.required],
         stretchbility : ['stretch', Validators.required]
-      })
+      }),
+      sizes : this.fb.array([
+        this.fb.control('', Validators.required)
+      ]),
+      quantity : this.fb.array([
+        this.fb.control('', Validators.required)
+      ])
     })
   }
+
+  get sizes() { return this.addProductForm.get('sizes') as FormArray }
+  get quantity() { return this.addProductForm.get('quantity') as FormArray }
 
   uploadImages(){
     const data = {
@@ -62,6 +68,11 @@ export class AddProductComponent implements OnInit {
     }
     // const uploadedImages = this.addProductForm.controls['images'].value;
     const response = this.imageService.uploadImage(data);
+  }
+
+  addSize(){
+    this.sizes.push(this.fb.control('', Validators.required));
+    this.quantity.push(this.fb.control('', Validators.required));
   }
 
   AddProduct = () => {
